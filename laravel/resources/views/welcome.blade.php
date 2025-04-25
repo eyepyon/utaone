@@ -45,7 +45,7 @@
         <a href="#" class="text-3xl font-['Pacifico'] text-primary">uta.one</a>
 
         <nav class="hidden md:flex items-center space-x-6">
-            <a href="#" class="text-gray-700 hover:text-primary transition-colors">楽曲一覧</a>
+            <a href="/list" class="text-gray-700 hover:text-primary transition-colors">楽曲一覧</a>
             <a href="#" class="text-gray-700 hover:text-primary transition-colors">ランキング</a>
             <a href="#" class="text-gray-700 hover:text-primary transition-colors">マイページ</a>
             <a href="#" class="text-gray-700 hover:text-primary transition-colors">ヘルプ</a>
