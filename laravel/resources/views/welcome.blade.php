@@ -122,7 +122,7 @@
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center mb-10">
             <h2 class="text-3xl font-bold">人気楽曲</h2>
-            <a href="#" class="text-primary flex items-center hover:text-primary/80 transition-colors">
+            <a href="/list" class="text-primary flex items-center hover:text-primary/80 transition-colors">
                 もっと見る
                 <i class="ri-arrow-right-line ml-1"></i>
             </a>
@@ -299,7 +299,7 @@
                 <p class="text-gray-600 mb-6">「自宅でカラオケを楽しめるのが最高です。音質も良く、採点機能で自分の歌唱力が向上しているのを実感できます。」</p>
                 <div class="flex items-center">
                     <div class="w-10 h-10 bg-gray-200 rounded-full overflow-hidden mr-3">
-                        <img src="https://readdy.ai/api/search-image?query=Portrait%20of%20a%20young%20Japanese%20woman%2C%20natural%20lighting%2C%20neutral%20expression%2C%20professional%20headshot%2C%20simple%20background&width=100&height=100&seq=11&orientation=squarish" alt="田中 さくら" class="w-full h-full object-cover">
+                        <img src="/img/koe1.jpg" alt="田中 さくら" class="w-full h-full object-cover">
                     </div>
                     <div>
                         <h4 class="font-bold">田中 さくら</h4>
@@ -321,7 +321,7 @@
                 <p class="text-gray-600 mb-6">「通勤中の電車でも練習できるのが便利です。音楽好きにはたまらないアプリです。曲のバリエーションも豊富で飽きません。」</p>
                 <div class="flex items-center">
                     <div class="w-10 h-10 bg-gray-200 rounded-full overflow-hidden mr-3">
-                        <img src="https://readdy.ai/api/search-image?query=Portrait%20of%20a%20young%20Japanese%20man%2C%20natural%20lighting%2C%20neutral%20expression%2C%20professional%20headshot%2C%20simple%20background&width=100&height=100&seq=12&orientation=squarish" alt="鈴木 健太" class="w-full h-full object-cover">
+                        <img src="/img/koe2.jpg" alt="鈴木 健太" class="w-full h-full object-cover">
                     </div>
                     <div>
                         <h4 class="font-bold">鈴木 健太</h4>
@@ -343,7 +343,7 @@
                 <p class="text-gray-600 mb-6">「子供と一緒に楽しめるのが良いですね。家族で盛り上がれるし、最新曲もすぐに追加されるので、いつも新鮮です。」</p>
                 <div class="flex items-center">
                     <div class="w-10 h-10 bg-gray-200 rounded-full overflow-hidden mr-3">
-                        <img src="https://readdy.ai/api/search-image?query=Portrait%20of%20a%20middle-aged%20Japanese%20woman%2C%20natural%20lighting%2C%20warm%20smile%2C%20professional%20headshot%2C%20simple%20background&width=100&height=100&seq=13&orientation=squarish" alt="佐々木 美穂" class="w-full h-full object-cover">
+                        <img src="/img/koe3.jpg" alt="佐々木 美穂" class="w-full h-full object-cover">
                     </div>
                     <div>
                         <h4 class="font-bold">佐々木 美穂</h4>
@@ -417,9 +417,9 @@
             <div>
                 <h3 class="text-lg font-bold mb-4">サービス</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">楽曲一覧</a></li>
+                    <li><a href="/list" class="text-gray-400 hover:text-white transition-colors">楽曲一覧</a></li>
                     <li><a href="#" class="text-gray-400 hover:text-white transition-colors">ランキング</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">新着曲</a></li>
+                    <li><a href="/list" class="text-gray-400 hover:text-white transition-colors">新着曲</a></li>
                     <li><a href="#" class="text-gray-400 hover:text-white transition-colors">ジャンル別</a></li>
                     <li><a href="#" class="text-gray-400 hover:text-white transition-colors">アーティスト別</a></li>
                 </ul>
