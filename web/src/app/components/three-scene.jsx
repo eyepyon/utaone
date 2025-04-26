@@ -1,9 +1,10 @@
 'use client'
 
 import React from 'react';
+import axios from 'axios';
 import { WebGLRenderer, Scene, PerspectiveCamera, DirectionalLight, Color } from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { VRM } from '@pixiv/three-vrm';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { VRMLoaderPlugin } from '@pixiv/three-vrm';
 import { OrbitControls } from 'three-orbitcontrols-ts';
 
 export class ThreeScene extends React.Component {
@@ -22,6 +23,9 @@ export class ThreeScene extends React.Component {
 
   onCanvasLoaded = (canvas) => {
     this.#initScene(canvas);
+    axios.get("/AliciaSolid.vrm", { responseType: 'arraybuffer' }).then((res) => {
+      this.updateVrmArryaBuffer(res.data);
+    });
   };
 
   #initScene(canvas) {
@@ -50,6 +54,32 @@ export class ThreeScene extends React.Component {
     renderer.setPixelRatio(window.devicePixelRatio);
     this.#renderer = renderer;
     this.animate();
+  }
+
+  async updateVrmUrl(url) {
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.register((parser) => {
+      return new VRMLoaderPlugin(parser);
+    });
+    const gltf = await gltfLoader.loadAsync(url);
+    const vrm = gltf.userData.vrm;
+    if (this.#scene) {
+      this.#scene.add(vrm.scene);
+    }
+    return vrm;
+  }
+
+  async updateVrmArryaBuffer(arrayBuffer) {
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.register((parser) => {
+      return new VRMLoaderPlugin(parser);
+    });
+    const gltf = await gltfLoader.parseAsync(arrayBuffer, '');
+    const vrm = gltf.userData.vrm;
+    if (this.#scene) {
+      this.#scene.add(vrm.scene);
+    }
+    return vrm;
   }
 
   animate() {
