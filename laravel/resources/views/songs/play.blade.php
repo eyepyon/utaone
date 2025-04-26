@@ -46,9 +46,9 @@
                     </div>
 
                     <!-- リアルタイムスコア表示 -->
-                    <div class="text-center mb-4">
-                        <h4>現在のスコア: <span id="current-score">0</span></h4>
-                    </div>
+{{--                    <div class="text-center mb-4">--}}
+{{--                        <h4>現在のスコア: <span id="current-score">0</span></h4>--}}
+{{--                    </div>--}}
                 </div>
 
                 <div class="col-md-4">

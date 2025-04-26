@@ -18,19 +18,20 @@ a, button {
 
 /* 歌詞表示のスタイル */
 #lyrics-container {
-    font-size: 18px;
+    font-size: 12px;
     line-height: 1.5;
     padding: 10px;
 }
 
 .lyric-line {
     padding: 5px 0;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, font-weight 0.3s ease;
     color: #666;
+    line-height: 1.5;
+    min-height: 2em;
 }
 
 .lyric-line.active {
-    font-size: 22px;
     font-weight: bold;
     color: #007bff;
 }

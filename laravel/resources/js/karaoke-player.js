@@ -56,6 +56,7 @@ $(document).ready(function() {
     }
 
     // 歌詞表示の更新
+
     function updateLyrics() {
         if (!audioPlayer || currentLyrics.length === 0) return;
 
@@ -73,21 +74,37 @@ $(document).ready(function() {
 
         // 歌詞表示の更新
         if (activeIndex >= 0) {
-            lyricsContainer.find('.lyric-line').removeClass('active');
-            lyricsContainer.find('.lyric-line').eq(activeIndex).addClass('active');
+            // アクティブでない歌詞のクラスをまず解除
+            lyricsContainer.find('.lyric-line.active').removeClass('active');
 
-            // 自動スクロール
-            const activeElement = lyricsContainer.find('.lyric-line.active');
+            // アクティブな歌詞要素を取得
+            const activeElement = lyricsContainer.find('.lyric-line').eq(activeIndex);
+
+            // 次にクラスを追加
+            activeElement.addClass('active');
+
+            // スクロール位置を固定ロジックで計算
             const containerHeight = lyricsContainer.height();
             const elementTop = activeElement.position().top;
-            const elementHeight = activeElement.height();
+            const elementHeight = activeElement.outerHeight();
+            const currentScroll = lyricsContainer.scrollTop();
 
-            lyricsContainer.animate({
-                scrollTop: elementTop - containerHeight / 2 + elementHeight
-            }, 200);
+            // 表示領域内に収まっているか確認
+            const elementBottom = elementTop + elementHeight;
+            const viewportBottom = containerHeight;
+
+            // 表示領域外の場合のみスクロール
+            if (elementTop < 0 || elementBottom > viewportBottom) {
+                // 中央に配置する位置を計算
+                const targetScroll = currentScroll + elementTop - (containerHeight - elementHeight) / 2;
+
+                // 滑らかにスクロール
+                lyricsContainer.stop().animate({
+                    scrollTop: targetScroll
+                }, 200, 'linear');
+            }
         }
     }
-
     // マイク初期化とレコーディング開始
     $('#start-singing').on('click', function() {
         if (!audioContext) {
