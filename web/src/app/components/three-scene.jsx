@@ -2,7 +2,7 @@
 
 import React from 'react';
 import axios from 'axios';
-import { WebGLRenderer, Scene, PerspectiveCamera, DirectionalLight, Color, DirectionalLightHelper, AnimationMixer, Clock } from 'three';
+import { WebGLRenderer, Scene, PerspectiveCamera, DirectionalLight, AmbientLight, Color, DirectionalLightHelper, AnimationMixer, Clock } from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { VRMLoaderPlugin } from '@pixiv/three-vrm';
 import { createVRMAnimationClip, VRMAnimationLoaderPlugin } from '@pixiv/three-vrm-animation';
@@ -32,17 +32,24 @@ export class ThreeScene extends React.Component {
   };
 
   async #loadInitAssets() {
-    const vrmDataResponse = await axios.get('/threedmodels/vrms/AliciaSolid.vrm', { responseType: 'arraybuffer' });
+    const vrmModel = '/threedmodels/vrms/AliciaSolid.vrm';
+    //const vrmModel = '/threedmodels/vrms/trump.vrm';
+    const vrmDataResponse = await axios.get(vrmModel, { responseType: 'arraybuffer' });
     await this.updateVrmArryaBuffer(vrmDataResponse.data);
     const vrmaDataAnimationResponse = await axios.get('/threedmodels/vrmas/ai-screem/ai-screem.vrma', { responseType: 'arraybuffer' });
     await this.updateVrmAnimationArryaBuffer(vrmaDataAnimationResponse.data);
-    const cyberStagePartUrls = [
+    const stagePartUrls = [
       '/threedmodels/stages/CyberStages/CyberStage_AB.glb',
       '/threedmodels/stages/CyberStages/CyberStage_C_Screen.glb',
       '/threedmodels/stages/CyberStages/CyberStage_D.glb',
     ];
+        /*
+    const stagePartUrls = [
+      '/threedmodels/stages/Palace/Palace.glb',
+    ];
+        */
     const cyberStagePartModelResponses = await Promise.all(
-      cyberStagePartUrls.map((cyberStagePartUrl) => axios.get(cyberStagePartUrl, { responseType: 'arraybuffer' })),
+      stagePartUrls.map((cyberStagePartUrl) => axios.get(cyberStagePartUrl, { responseType: 'arraybuffer' })),
     );
     await Promise.all(
       cyberStagePartModelResponses.map((cyberStagePartModelResponse) => this.updateGlbArryaBuffer(cyberStagePartModelResponse.data)),
@@ -59,6 +66,10 @@ export class ThreeScene extends React.Component {
     this.#canvas = canvas;
     const scene = new Scene();
     scene.background = new Color(0x212121);
+
+    const ambientLight = new AmbientLight(0xffffff);
+    ambientLight.position.set(0, 1, -2);
+    scene.add(ambientLight);
 
     const directionalLight = new DirectionalLight(0xffffff);
     directionalLight.position.set(0, 1, -2);
