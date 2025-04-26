@@ -11,9 +11,13 @@ https://uta.one/phpmyadmin/
 
 # 使用した素材一覧
 
-## 3Dモデル
+## 背景の3Dモデル
 
 * [サイバーステージ](https://booth.pm/ja/items/3964661)
+
+## 使用した3Dモデル
+
+* [ニコニ立体ちゃん特設サイト(アリシア・ソリッド)](https://3d.nicovideo.jp/alicia/)
 
 ## モーション
 
