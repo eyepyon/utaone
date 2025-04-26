@@ -169,6 +169,16 @@
       "name": "ガタッ！お前じゃねえ、スンッ……",
       "displayName": "ガタッ！お前じゃねえ、スンッ……",
       "path": "/threedmodels/vrmas/fm_vrma_motion_pack_01/008_gatan.vrma"
+    },
+    {
+      "name": "マフティーダンスモーション",
+      "displayName": "マフティーダンスモーション",
+      "path": "/threedmodels/vrmas/cafenotako_mafty_dance/cafenotako_mafty_dance.vrma"
+    },
+    {
+      "name": "人マニア　踊ってみたVRMAモーションデータ",
+      "displayName": "人マニア　踊ってみたVRMAモーションデータ",
+      "path": "/threedmodels/vrmas/Picatrix/Picatrix.vrma"
     }
   ]
 }
