@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Song;
 use App\Models\UserScore;
+use App\Models\Recording;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,13 +43,13 @@ class PlayController extends Controller
         ]);
 
         try {
-// ファイル名の生成（ユーザーID_曲ID_タイムスタンプ）
+            // ファイル名の生成（ユーザーID_曲ID_タイムスタンプ）
             $fileName = Auth::id() . '_' . $request->song_id . '_' . time() . '.' . $request->file('audio_data')->extension();
 
-// ファイルの保存
+            // ファイルの保存
             $path = $request->file('audio_data')->storeAs('recordings', $fileName, 'public');
 
-// レコーディングレコードをデータベースに保存
+            // レコーディングレコードをデータベースに保存
             $recording = Recording::create([
                 'user_id' => Auth::id(),
                 'song_id' => $request->song_id,
