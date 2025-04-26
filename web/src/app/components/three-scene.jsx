@@ -17,6 +17,7 @@ export class ThreeScene extends React.Component {
   #frameId = null;
   #currentVrm = null;
   #currentAnimationMixer = null;
+  #currentAnimaionClipActions = [];
 
   constructor(props) {
     super(props);
@@ -131,9 +132,13 @@ export class ThreeScene extends React.Component {
     const gltf = await gltfLoader.parseAsync(arrayBuffer, '');
     const vrmAnimations = gltf.userData.vrmAnimations;
     if (this.#currentVrm && vrmAnimations) {
+      this.#currentAnimationMixer?.stopAllAction();
+      this.#currentAnimaionClipActions = [];
       for (const vrmAnimation of vrmAnimations) {
         const clip = createVRMAnimationClip(vrmAnimation, this.#currentVrm);
-        this.#currentAnimationMixer.clipAction(clip).play();
+        const currentAnimaionClipAction = this.#currentAnimationMixer.clipAction(clip);
+        this.#currentAnimaionClipActions.push(currentAnimaionClipAction);
+        currentAnimaionClipAction.play();
       }
     }
     return gltf;
