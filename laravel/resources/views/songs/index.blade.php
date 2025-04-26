@@ -30,7 +30,7 @@
                                     <div>
                                         難易度:
                                         @for ($i = 0; $i < $song->difficulty; $i++)
-                                            <i class="bi bi-star-fill text-warning"></i>
+                                            ★
                                         @endfor
                                     </div>
                                     <a href="{{ route('songs.play', $song) }}" class="btn btn-primary">歌う</a>

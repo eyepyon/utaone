@@ -45,7 +45,7 @@
         <a href="#" class="text-3xl font-['Pacifico'] text-primary">uta.one</a>
 
         <nav class="hidden md:flex items-center space-x-6">
-            <a href="/list" class="text-gray-700 hover:text-primary transition-colors">楽曲一覧</a>
+            <a href="/songs" class="text-gray-700 hover:text-primary transition-colors">楽曲一覧</a>
             <a href="#" class="text-gray-700 hover:text-primary transition-colors">ランキング</a>
             <a href="#" class="text-gray-700 hover:text-primary transition-colors">マイページ</a>
             <a href="#" class="text-gray-700 hover:text-primary transition-colors">ヘルプ</a>
@@ -122,62 +122,26 @@
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center mb-10">
             <h2 class="text-3xl font-bold">人気楽曲</h2>
-            <a href="/list" class="text-primary flex items-center hover:text-primary/80 transition-colors">
+            <a href="/songs" class="text-primary flex items-center hover:text-primary/80 transition-colors">
                 もっと見る
                 <i class="ri-arrow-right-line ml-1"></i>
             </a>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            @foreach ($songs as $song)
+                <a href="{{ route('songs.play', $song) }}" class="btn btn-primary">
             <div class="song-card bg-white rounded overflow-hidden shadow-md transition-all duration-300">
                 <div class="relative pb-[100%]">
-                    <img src="https://readdy.ai/api/search-image?query=Album%20cover%20art%20for%20a%20Japanese%20pop%20song%2C%20minimalist%20design%2C%20professional%20quality%2C%20clean%20background%2C%20music%20industry%20standard&width=300&height=300&seq=3&orientation=squarish" alt="楽曲カバー" class="absolute inset-0 w-full h-full object-cover">
+                    <img src="{{ $song->thumbnail ? asset('storage/' . $song->thumbnail) : asset('images/default-thumbnail.jpg') }}" class="absolute inset-0 w-full h-full object-cover" alt="{{ $song->title }}">
                 </div>
                 <div class="p-4">
-                    <h3 class="font-bold text-gray-900 truncate">桜色の約束</h3>
-                    <p class="text-gray-600 text-sm truncate">佐藤 美月</p>
+                    <h3 class="font-bold text-gray-900 truncate">{{ $song->title }}</h3>
+                    <p class="text-gray-600 text-sm truncate">{{ $song->artist }}</p>
                 </div>
             </div>
-
-            <div class="song-card bg-white rounded overflow-hidden shadow-md transition-all duration-300">
-                <div class="relative pb-[100%]">
-                    <img src="https://readdy.ai/api/search-image?query=Album%20cover%20art%20for%20a%20Japanese%20rock%20song%2C%20dynamic%20design%2C%20professional%20quality%2C%20clean%20background%2C%20music%20industry%20standard&width=300&height=300&seq=4&orientation=squarish" alt="楽曲カバー" class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-900 truncate">青空のメロディー</h3>
-                    <p class="text-gray-600 text-sm truncate">BLUE HORIZON</p>
-                </div>
-            </div>
-
-            <div class="song-card bg-white rounded overflow-hidden shadow-md transition-all duration-300">
-                <div class="relative pb-[100%]">
-                    <img src="https://readdy.ai/api/search-image?query=Album%20cover%20art%20for%20a%20Japanese%20ballad%20song%2C%20emotional%20design%2C%20professional%20quality%2C%20clean%20background%2C%20music%20industry%20standard&width=300&height=300&seq=5&orientation=squarish" alt="楽曲カバー" class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-900 truncate">星空のワルツ</h3>
-                    <p class="text-gray-600 text-sm truncate">高橋 陽子</p>
-                </div>
-            </div>
-
-            <div class="song-card bg-white rounded overflow-hidden shadow-md transition-all duration-300">
-                <div class="relative pb-[100%]">
-                    <img src="https://readdy.ai/api/search-image?query=Album%20cover%20art%20for%20a%20Japanese%20dance%20song%2C%20energetic%20design%2C%20professional%20quality%2C%20clean%20background%2C%20music%20industry%20standard&width=300&height=300&seq=6&orientation=squarish" alt="楽曲カバー" class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-900 truncate">ダンスフロアの恋</h3>
-                    <p class="text-gray-600 text-sm truncate">NEON BEATS</p>
-                </div>
-            </div>
-
-            <div class="song-card bg-white rounded overflow-hidden shadow-md transition-all duration-300">
-                <div class="relative pb-[100%]">
-                    <img src="https://readdy.ai/api/search-image?query=Album%20cover%20art%20for%20a%20Japanese%20indie%20song%2C%20artistic%20design%2C%20professional%20quality%2C%20clean%20background%2C%20music%20industry%20standard&width=300&height=300&seq=7&orientation=squarish" alt="楽曲カバー" class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-900 truncate">雨の街角</h3>
-                    <p class="text-gray-600 text-sm truncate">森田 隆</p>
-                </div>
-            </div>
+                </a>
+            @endforeach
         </div>
     </div>
 </section>
