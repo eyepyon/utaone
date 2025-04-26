@@ -42,4 +42,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    /**
+     * このユーザーの録音を取得
+     */
+    public function recordings()
+    {
+        return $this->hasMany(Recording::class);
+    }
+
+    /**
+     * このユーザーのスコアを取得
+     */
+    public function scores()
+    {
+        return $this->hasMany(UserScore::class);
+    }
+
 }

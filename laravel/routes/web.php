@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\SongController;
+use App\Http\Controllers\PlayController;
+use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +22,20 @@ Route::get('/', function () {
 });
 Route::get('/list', [App\Http\Controllers\ListController::class, 'index'])->name('list');
 
+Route::post('/songs/save-recording', [PlayController::class, 'saveRecording'])->name('songs.saveRecording');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/songs', [SongController::class, 'index'])->name('songs.index');
+    Route::get('/songs/play/{song}', [PlayController::class, 'show'])->name('songs.play');
+    Route::post('/songs/score', [PlayController::class, 'saveScore'])->name('songs.saveScore');
+    Route::get('/user/scores', [UserController::class, 'scores'])->name('user.scores');
+    Route::get('/recordings', [RecordingController::class, 'index'])->name('recordings.index');
+    Route::delete('/recordings/{recording}', [RecordingController::class, 'destroy'])->name('recordings.destroy');
+    Route::get('/recordings/{recording}/download', [RecordingController::class, 'download'])->name('recordings.download');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
