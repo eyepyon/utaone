@@ -14,10 +14,12 @@ https://uta.one/phpmyadmin/
 ## 背景の3Dモデル
 
 * [サイバーステージ](https://booth.pm/ja/items/3964661)
+* [宮殿のようなステージ vr](https://booth.pm/ja/items/3278442)
 
 ## 使用した3Dモデル
 
 * [ニコニ立体ちゃん特設サイト(アリシア・ソリッド)](https://3d.nicovideo.jp/alicia/)
+* [Trump](https://hub.vroid.com/characters/3547853295237135862/models/2042307146559450438)
 
 ## モーション
 
@@ -41,3 +43,4 @@ https://uta.one/phpmyadmin/
 * [TikTok_ダンスモーション67_『愛♡スクリ～ム！』](https://maronvtuber.booth.pm/items/6792349)
 * [TikTok_ダンスモーション68_『キスキツネ』](https://maronvtuber.booth.pm/items/6820197)
 * [VRMアニメーション7種セット](https://booth.pm/ja/items/5512385)
+* [使いどころに困るモーションセット](https://booth.pm/ja/items/5527394)

@@ -129,6 +129,46 @@
       "name": "kiss-fox",
       "displayName": "キスキツネ",
       "path": "/threedmodels/vrmas/kiss-fox/kiss-fox.vrma"
+    },
+    {
+      "name": "適当なポーズをとりながらのムーブ",
+      "displayName": "適当なポーズをとりながらのムーブ",
+      "path": "/threedmodels/vrmas/fm_vrma_motion_pack_01/001_motion_pose.vrma"
+    },
+    {
+      "name": "土下座",
+      "displayName": "土下座",
+      "path": "/threedmodels/vrmas/fm_vrma_motion_pack_01/002_dogeza.vrma"
+    },
+    {
+      "name": "踏み台昇降",
+      "displayName": "踏み台昇降",
+      "path": "/threedmodels/vrmas/fm_vrma_motion_pack_01/003_humidai.vrma"
+    },
+    {
+      "name": "待ち合わせ＆挨拶",
+      "displayName": "待ち合わせ＆挨拶",
+      "path": "/threedmodels/vrmas/fm_vrma_motion_pack_01/004_hello_1.vrma"
+    },
+    {
+      "name": "スマホを弄る人",
+      "displayName": "スマホを弄る人",
+      "path": "/threedmodels/vrmas/fm_vrma_motion_pack_01/005_smartphone.vrma"
+    },
+    {
+      "name": "ペットボトルの水を飲む",
+      "displayName": "ペットボトルの水を飲む",
+      "path": "/threedmodels/vrmas/fm_vrma_motion_pack_01/006_drinkwater.vrma"
+    },
+    {
+      "name": "やる気が出ない人を励ます",
+      "displayName": "やる気が出ない人を励ます",
+      "path": "/threedmodels/vrmas/fm_vrma_motion_pack_01/007_gekirei.vrma"
+    },
+    {
+      "name": "ガタッ！お前じゃねえ、スンッ……",
+      "displayName": "ガタッ！お前じゃねえ、スンッ……",
+      "path": "/threedmodels/vrmas/fm_vrma_motion_pack_01/008_gatan.vrma"
     }
   ]
 }
