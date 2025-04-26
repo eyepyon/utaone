@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { AudioRecorder } from "./components/audio-recorder";
+import { ThreeScene } from "./components/three-scene";
 
 export default function Home() {
   return (
@@ -91,6 +92,7 @@ export default function Home() {
           Go to nextjs.org →
         </a>
         <AudioRecorder />
+        <ThreeScene />
       </footer>
     </div>
   );
