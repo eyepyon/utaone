@@ -1,11 +1,6 @@
 {
   "animations": [
     {
-      "name": "愛スクリーム",
-      "displayName": "愛スクリーム",
-      "path": "/threedmodels/vrmas/ai-screem/ai-screem.vrma"
-    },
-    {
       "name": "全身を見せる",
       "displayName": "【VRMアニメーションセット】全身を見せる",
       "path": "/threedmodels/vrmas/VRMA_MotionPack/VRMA_01.vrma"
@@ -74,6 +69,66 @@
       "name": "ui-catcher",
       "displayName": "うい麦畑でつかまえて",
       "path": "/threedmodels/vrmas/ui-catcher/ui-catcher.vrma"
+    },
+    {
+      "name": "dear-days",
+      "displayName": "シカ色デイズ",
+      "path": "/threedmodels/vrmas/dear-daysdear-days.vrma"
+    },
+    {
+      "name": "evil-eye-wink",
+      "displayName": "魔眼ウィンク",
+      "path": "/threedmodels/vrmas/evil-eye-wink/evil-eye-wink.vrma"
+    },
+    {
+      "name": "まいたけダンス",
+      "displayName": "まいたけダンス",
+      "path": "/threedmodels/vrmas/maitake-dance/maitake-dance.vrma"
+    },
+    {
+      "name": "piepie-mask",
+      "displayName": "パイパイ仮面でどうかしらん？",
+      "path": "/threedmodels/vrmas/piepie-mask/piepie-mask.vrma"
+    },
+    {
+      "name": "テトリス",
+      "displayName": "テトリス",
+      "path": "/threedmodels/vrmas/tetris/tetris.vrma"
+    },
+    {
+      "name": "LADY_CRAZY",
+      "displayName": "LADY_CRAZY",
+      "path": "/threedmodels/vrmas/LADY_CRAZY/LADY_CRAZY.vrma"
+    },
+    {
+      "name": "ハッピーミルフィーユ",
+      "displayName": "ハッピーミルフィーユ",
+      "path": "/threedmodels/vrmas/happy-millefeuille/happy-millefeuille.vrma"
+    },
+    {
+      "name": "ひたむきシンデレラ",
+      "displayName": "ひたむきシンデレラ",
+      "path": "/threedmodels/vrmas/devoted-cinderella/devoted-cinderella.vrma"
+    },
+    {
+      "name": "どきどきキュンで大暴走",
+      "displayName": "どきどきキュンで大暴走",
+      "path": "/threedmodels/vrmas/dokidoki-kyun/dokidoki-kyun.vrma"
+    },
+    {
+      "name": "LEMON_MELON_COOKIE",
+      "displayName": "LEMON_MELON_COOKIE",
+      "path": "/threedmodels/vrmas/LEMON_MELON_COOKIE/LEMON_MELON_COOKIE.vrma"
+    },
+    {
+      "name": "愛スクリーム",
+      "displayName": "愛スクリーム",
+      "path": "/threedmodels/vrmas/ai-screem/ai-screem.vrma"
+    },
+    {
+      "name": "kiss-fox",
+      "displayName": "キスキツネ",
+      "path": "/threedmodels/vrmas/kiss-fox/kiss-fox.vrma"
     }
   ]
 }
