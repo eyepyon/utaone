@@ -2,9 +2,10 @@
 
 import React from 'react';
 import axios from 'axios';
-import { WebGLRenderer, Scene, PerspectiveCamera, DirectionalLight, Color, DirectionalLightHelper } from 'three';
+import { WebGLRenderer, Scene, PerspectiveCamera, DirectionalLight, Color, DirectionalLightHelper, AnimationMixer, Clock } from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { VRMLoaderPlugin } from '@pixiv/three-vrm';
+import { createVRMAnimationClip, VRMAnimationLoaderPlugin } from "@pixiv/three-vrm-animation";
 import { OrbitControls } from 'three-orbitcontrols-ts';
 
 export class ThreeScene extends React.Component {
@@ -12,7 +13,10 @@ export class ThreeScene extends React.Component {
   #scene = null;
   #camera = null;
   #renderer = null;
+  #clock = null;
   #frameId = null;
+  #currentVrm = null;
+  #currentAnimationMixer = null;
 
   constructor(props) {
     super(props);
@@ -23,16 +27,18 @@ export class ThreeScene extends React.Component {
 
   onCanvasLoaded = (canvas) => {
     this.#initScene(canvas);
-    axios.get("/threedmodels/vrms/AliciaSolid.vrm", { responseType: 'arraybuffer' }).then((res) => {
-      this.updateVrmArryaBuffer(res.data);
-    });
-    const cyberStagePartUrls = ["/threedmodels/stages/CyberStages/CyberStage_AB.glb","/threedmodels/stages/CyberStages/CyberStage_C_Screen.glb","/threedmodels/stages/CyberStages/CyberStage_D.glb"]
-    for(const cyberStagePartUrl of cyberStagePartUrls) {
-      axios.get(cyberStagePartUrl, { responseType: 'arraybuffer' }).then((res) => {
-        this.updateGlbArryaBuffer(res.data);
-      });
-    }
+    this.#loadInitAssets();
   };
+
+  async #loadInitAssets() {
+    const vrmDataResponse = await axios.get("/threedmodels/vrms/AliciaSolid.vrm", { responseType: 'arraybuffer' });
+    await this.updateVrmArryaBuffer(vrmDataResponse.data);
+    const vrmaDataAnimationResponse = await axios.get("/threedmodels/vrmas/ai_screem.vrma", { responseType: 'arraybuffer' });
+    await this.updateVrmAnimationArryaBuffer(vrmaDataAnimationResponse.data);
+    const cyberStagePartUrls = ["/threedmodels/stages/CyberStages/CyberStage_AB.glb","/threedmodels/stages/CyberStages/CyberStage_C_Screen.glb","/threedmodels/stages/CyberStages/CyberStage_D.glb"]
+    const cyberStagePartModelResponses = await Promise.all(cyberStagePartUrls.map((cyberStagePartUrl) => axios.get(cyberStagePartUrl, { responseType: 'arraybuffer' })));
+    await Promise.all(cyberStagePartModelResponses.map((cyberStagePartModelResponse) => this.updateGlbArryaBuffer(cyberStagePartModelResponse.data)));
+  }
 
   #initScene(canvas) {
     if (!canvas) {
@@ -63,6 +69,10 @@ export class ThreeScene extends React.Component {
     renderer.setSize(width, height);
     renderer.setPixelRatio(window.devicePixelRatio);
     this.#renderer = renderer;
+
+    this.#clock = new Clock();
+    this.#clock.start();
+
     this.animate();
   }
 
@@ -76,6 +86,8 @@ export class ThreeScene extends React.Component {
     if (this.#scene) {
       this.#scene.add(vrm.scene);
     }
+    this.#currentVrm = vrm;
+    this.#currentAnimationMixer = new AnimationMixer(vrm.scene);
     return vrm;
   }
 
@@ -89,15 +101,32 @@ export class ThreeScene extends React.Component {
     if (this.#scene) {
       this.#scene.add(vrm.scene);
     }
+    this.#currentVrm = vrm;
+    this.#currentAnimationMixer = new AnimationMixer(vrm.scene);
     return vrm;
   }
 
   async updateGlbArryaBuffer(arrayBuffer) {
     const gltfLoader = new GLTFLoader();
     const gltf = await gltfLoader.parseAsync(arrayBuffer, '');
-    console.log(gltf);
     if (this.#scene) {
       this.#scene.add(gltf.scene);
+    }
+    return gltf;
+  }
+
+  async updateVrmAnimationArryaBuffer(arrayBuffer) {
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.register((parser) => {
+      return new VRMAnimationLoaderPlugin(parser);
+    });
+    const gltf = await gltfLoader.parseAsync(arrayBuffer, '');
+    const vrmAnimations = gltf.userData.vrmAnimations;
+    if (this.#currentVrm && vrmAnimations) {
+      for(const vrmAnimation of vrmAnimations) {
+        const clip = createVRMAnimationClip(vrmAnimation, this.#currentVrm);
+        this.#currentAnimationMixer.clipAction(clip).play();
+      }
     }
     return gltf;
   }
@@ -105,6 +134,17 @@ export class ThreeScene extends React.Component {
   animate() {
     // 次のフレームを要求
     this.#frameId = window.requestAnimationFrame(this.animate);
+
+    if (this.#clock) {
+      const deltaTime = this.#clock.getDelta();
+      if (this.#currentAnimationMixer) {
+          this.#currentAnimationMixer.update(deltaTime);
+      }
+      if (this.#currentVrm) {
+          this.#currentVrm.update(deltaTime);
+      }
+    }
+
     if (this.#renderer && this.#scene && this.#camera) {
       this.#renderer.render(this.#scene, this.#camera);
     }
