@@ -3,7 +3,7 @@
     {
       "name": "愛スクリーム",
       "displayName": "愛スクリーム",
-      "path": "/threedmodels/vrmas/ai_screem/ai_screem.vrma"
+      "path": "/threedmodels/vrmas/ai-screem/ai-screem.vrma"
     },
     {
       "name": "全身を見せる",
@@ -39,6 +39,41 @@
       "name": "屈伸運動",
       "displayName": "【VRMアニメーションセット】屈伸運動",
       "path": "/threedmodels/vrmas/VRMA_MotionPack/VRMA_07.vrma"
+    },
+    {
+      "name": "刀ピークリスマスのテーマソング2023",
+      "displayName": "刀ピークリスマスのテーマソング2023",
+      "path": "/threedmodels/vrmas/bradep-theme-song2023/bradep-theme-song2023.vrma"
+    },
+    {
+      "name": "not-devil",
+      "displayName": "デビルじゃないもん",
+      "path": "/threedmodels/vrmas/not-devil/not-devil.vrma"
+    },
+    {
+      "name": "love-dance-holl",
+      "displayName": "愛包ダンスホール",
+      "path": "/threedmodels/vrmas/love-dance-holl/love-dance-holl.vrma"
+    },
+    {
+      "name": "Bling-Bang-Bang-Born",
+      "displayName": "Bling-Bang-Bang-Born",
+      "path": "/threedmodels/vrmas/Bling-Bang-Bang-Born/Bling-Bang-Bang-Born.vrma"
+    },
+    {
+      "name": "wonderful-precure",
+      "displayName": "わんだふるぷりきゅあ！FUN☆FUN☆わんだふるDAYS！",
+      "path": "/threedmodels/vrmas/wonderful-precure/wonderful-precure.vrma"
+    },
+    {
+      "name": "しかのこのこのここしたんたん",
+      "displayName": "わしかのこのこのここしたんたん",
+      "path": "/threedmodels/vrmas/deer-nokotan/deer-nokotan.vrma"
+    },
+    {
+      "name": "ui-catcher",
+      "displayName": "うい麦畑でつかまえて",
+      "path": "/threedmodels/vrmas/ui-catcher/ui-catcher.vrma"
     }
   ]
 }

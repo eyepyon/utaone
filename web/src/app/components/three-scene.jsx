@@ -34,7 +34,7 @@ export class ThreeScene extends React.Component {
   async #loadInitAssets() {
     const vrmDataResponse = await axios.get('/threedmodels/vrms/AliciaSolid.vrm', { responseType: 'arraybuffer' });
     await this.updateVrmArryaBuffer(vrmDataResponse.data);
-    const vrmaDataAnimationResponse = await axios.get('/threedmodels/vrmas/ai_screem/ai_screem.vrma', { responseType: 'arraybuffer' });
+    const vrmaDataAnimationResponse = await axios.get('/threedmodels/vrmas/ai-screem/ai-screem.vrma', { responseType: 'arraybuffer' });
     await this.updateVrmAnimationArryaBuffer(vrmaDataAnimationResponse.data);
     const cyberStagePartUrls = [
       '/threedmodels/stages/CyberStages/CyberStage_AB.glb',

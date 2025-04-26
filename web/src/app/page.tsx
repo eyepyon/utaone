@@ -37,7 +37,7 @@ export default function Home() {
           {animationInfos.map((animationInfo, index) => (
             <Grid key={index} size={2}>
               <Button variant="contained" style={{ textAlign: 'center' }} onClick={(e) => onChangeAnimation(animationInfo)}>
-                {animationInfo.name}
+                {animationInfo.displayName}
               </Button>
             </Grid>
           ))}
