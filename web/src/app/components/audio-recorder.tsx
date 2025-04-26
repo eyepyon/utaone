@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 
@@ -9,8 +9,7 @@ export class AudioRecorder extends React.Component {
 
   componentDidMount() {}
 
-  onAudioLoaded = (audio: HTMLAudioElement) => {
-  };
+  onAudioLoaded = (audio: HTMLAudioElement) => {};
 
   render() {
     return (
