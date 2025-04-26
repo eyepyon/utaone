@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { AudioRecorder } from "./components/audio-recorder";
 
 export default function Home() {
   return (
@@ -89,6 +90,7 @@ export default function Home() {
           />
           Go to nextjs.org →
         </a>
+        <AudioRecorder />
       </footer>
     </div>
   );
