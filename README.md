@@ -22,3 +22,4 @@ https://uta.one/phpmyadmin/
 ## モーション
 
 * [TikTok_ダンスモーション67_『愛♡スクリ～ム！』](https://maronvtuber.booth.pm/items/6792349)
+* [VRMアニメーション7種セット](https://booth.pm/ja/items/5512385)

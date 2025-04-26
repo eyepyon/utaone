@@ -1,0 +1,44 @@
+{
+  "animations": [
+    {
+      "name": "愛スクリーム",
+      "displayName": "愛スクリーム",
+      "path": "/threedmodels/vrmas/ai_screem/ai_screem.vrma"
+    },
+    {
+      "name": "全身を見せる",
+      "displayName": "【VRMアニメーションセット】全身を見せる",
+      "path": "/threedmodels/vrmas/VRMA_MotionPack/VRMA_01.vrma"
+    },
+    {
+      "name": "挨拶",
+      "displayName": "【VRMアニメーションセット】挨拶",
+      "path": "/threedmodels/vrmas/VRMA_MotionPack/VRMA_02.vrma"
+    },
+    {
+      "name": "Vサイン",
+      "displayName": "Vサイン",
+      "path": "/threedmodels/vrmas/VRMA_MotionPack/VRMA_03.vrma"
+    },
+    {
+      "name": "撃つ",
+      "displayName": "【VRMアニメーションセット】撃つ",
+      "path": "/threedmodels/vrmas/VRMA_MotionPack/VRMA_04.vrma"
+    },
+    {
+      "name": "回る",
+      "displayName": "【VRMアニメーションセット】回る",
+      "path": "/threedmodels/vrmas/VRMA_MotionPack/VRMA_05.vrma"
+    },
+    {
+      "name": "モデルポーズ",
+      "displayName": "【VRMアニメーションセット】モデルポーズ",
+      "path": "/threedmodels/vrmas/VRMA_MotionPack/VRMA_06.vrma"
+    },
+    {
+      "name": "屈伸運動",
+      "displayName": "【VRMアニメーションセット】屈伸運動",
+      "path": "/threedmodels/vrmas/VRMA_MotionPack/VRMA_07.vrma"
+    }
+  ]
+}
