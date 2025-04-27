@@ -23,6 +23,8 @@ Route::get('/', [App\Http\Controllers\TopController::class, 'index'])->name('wel
 //  return view('welcome');
 //});
 Route::get('/list', [App\Http\Controllers\ListController::class, 'index'])->name('list');
+Route::get('/qwen', [App\Http\Controllers\QwenController::class, 'index'])->name('qwenvideo');
+
 
 Route::post('/songs/save-recording', [PlayController::class, 'saveRecording'])->name('songs.saveRecording');
 

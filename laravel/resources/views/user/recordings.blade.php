@@ -2,19 +2,19 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">録音履歴</div>
+        <div class="card-header">Record History</div>
         <div class="card-body">
             @if($recordings->count() > 0)
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>曲名</th>
-                            <th>アーティスト</th>
-                            <th>録音日時</th>
-                            <th>スコア</th>
-                            <th>録音</th>
-                            <th>操作</th>
+                            <th>SongTitle</th>
+                            <th>Artist</th>
+                            <th>RecordingDate</th>
+                            <th>Score</th>
+                            <th>Record</th>
+                            <th>Command</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -40,11 +40,11 @@
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('songs.play', $recording->song) }}" class="btn btn-sm btn-primary">再度挑戦</a>
+                                        <a href="{{ route('songs.play', $recording->song) }}" class="btn btn-sm btn-primary">ReTRY</a>
                                         <form action="{{ route('recordings.destroy', $recording) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">削除</button>
+                                            <button type="submit" class="btn btn-sm btn-danger">DELETE</button>
                                         </form>
                                     </div>
                                 </td>
