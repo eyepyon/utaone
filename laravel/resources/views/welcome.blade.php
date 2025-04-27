@@ -47,7 +47,7 @@
         <nav class="hidden md:flex items-center space-x-6">
             <a href="/songs" class="text-gray-700 hover:text-primary transition-colors">楽曲一覧</a>
             <a href="#" class="text-gray-700 hover:text-primary transition-colors">ランキング</a>
-            <a href="#" class="text-gray-700 hover:text-primary transition-colors">マイページ</a>
+            <a href="/recordings" class="text-gray-700 hover:text-primary transition-colors">マイページ</a>
             <a href="#" class="text-gray-700 hover:text-primary transition-colors">ヘルプ</a>
         </nav>
 
