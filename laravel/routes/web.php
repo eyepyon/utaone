@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\PlayController;
+use App\Http\Controllers\RecordingController;
 use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;

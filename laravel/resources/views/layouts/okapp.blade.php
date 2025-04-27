@@ -28,10 +28,10 @@
                     <a class="nav-link" href="/">ホーム</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('songs.index') }}">曲一覧</a>
+                    <a class="nav-link" href="{{ route('songs.index') }}">SongList</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.scores') }}">スコア履歴</a>
+                    <a class="nav-link" href="{{ route('recordings.index') }}">RecordList</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -44,17 +44,17 @@
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" class="dropdown-item">ログアウト</button>
+                                    <button type="submit" class="dropdown-item">Logout</button>
                                 </form>
                             </li>
                         </ul>
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">会員登録</a>
+                        <a class="nav-link" href="{{ route('register') }}">SignUp</a>
                     </li>
                 @endauth
             </ul>
