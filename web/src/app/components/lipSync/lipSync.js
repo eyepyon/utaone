@@ -1,22 +1,18 @@
-interface LipSyncAnalyzeResult {
-  volume: number;
-}
-
 const TIME_DOMAIN_DATA_LENGTH = 2048;
 
 export class LipSync {
-  public readonly audio: AudioContext;
-  public readonly analyser: AnalyserNode;
-  public readonly timeDomainData: Float32Array;
+  audio;
+  analyser;
+  timeDomainData;
 
-  public constructor(audio: AudioContext) {
+  constructor(audio) {
     this.audio = audio;
 
     this.analyser = audio.createAnalyser();
     this.timeDomainData = new Float32Array(TIME_DOMAIN_DATA_LENGTH);
   }
 
-  public update(): LipSyncAnalyzeResult {
+  update() {
     this.analyser.getFloatTimeDomainData(this.timeDomainData);
 
     let volume = 0.0;
@@ -33,7 +29,7 @@ export class LipSync {
     };
   }
 
-  public async playFromArrayBuffer(buffer: ArrayBuffer, onEnded?: () => void) {
+  async playFromArrayBuffer(buffer, onEnded) {
     const audioBuffer = await this.audio.decodeAudioData(buffer);
 
     const bufferSource = this.audio.createBufferSource();
@@ -47,7 +43,7 @@ export class LipSync {
     }
   }
 
-  public async playFromURL(url: string, onEnded?: () => void) {
+  async playFromURL(url, onEnded) {
     const res = await fetch(url);
     const buffer = await res.arrayBuffer();
     this.playFromArrayBuffer(buffer, onEnded);
