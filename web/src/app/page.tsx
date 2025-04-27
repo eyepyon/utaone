@@ -19,7 +19,7 @@ export default function Home() {
   const [animationInfos, setAnimationInfos] = useState<AnimationInfo[]>([]);
   useEffect(() => {
     (async () => {
-      const animationListResponse = await axios.get('/threedmodels/vrmas/animation-list.json');
+      const animationListResponse = await axios.get('/threedmodels/models-info.json');
       setAnimationInfos(animationListResponse.data.animations);
     })();
   }, []);
