@@ -2,7 +2,17 @@
 
 import React from 'react';
 import axios from 'axios';
-import { WebGLRenderer, Scene, PerspectiveCamera, DirectionalLight, AmbientLight, Color, DirectionalLightHelper, AnimationMixer, Clock } from 'three';
+import {
+  WebGLRenderer,
+  Scene,
+  PerspectiveCamera,
+  DirectionalLight,
+  AmbientLight,
+  Color,
+  DirectionalLightHelper,
+  AnimationMixer,
+  Clock,
+} from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { VRMLoaderPlugin } from '@pixiv/three-vrm';
 import { createVRMAnimationClip, VRMAnimationLoaderPlugin } from '@pixiv/three-vrm-animation';
@@ -32,22 +42,15 @@ export class ThreeScene extends React.Component {
   };
 
   async #loadInitAssets() {
-    const vrmModel = '/threedmodels/vrms/AliciaSolid.vrm';
-    //const vrmModel = '/threedmodels/vrms/trump.vrm';
+    const modelInfoResponse = await axios.get('/threedmodels/models-info.json');
+    const modelInfos = modelInfoResponse.data;
+    const vrmModel = modelInfos.vrms[0].path;
     const vrmDataResponse = await axios.get(vrmModel, { responseType: 'arraybuffer' });
     await this.updateVrmArryaBuffer(vrmDataResponse.data);
-    const vrmaDataAnimationResponse = await axios.get('/threedmodels/vrmas/ai-screem/ai-screem.vrma', { responseType: 'arraybuffer' });
+    const vrmaDataAnimationResponse = await axios.get(modelInfos.animations[0].path, { responseType: 'arraybuffer' });
     await this.updateVrmAnimationArryaBuffer(vrmaDataAnimationResponse.data);
-    const stagePartUrls = [
-      '/threedmodels/stages/CyberStages/CyberStage_AB.glb',
-      '/threedmodels/stages/CyberStages/CyberStage_C_Screen.glb',
-      '/threedmodels/stages/CyberStages/CyberStage_D.glb',
-    ];
-        /*
-    const stagePartUrls = [
-      '/threedmodels/stages/Palace/Palace.glb',
-    ];
-        */
+    const stageRandomIndex = Math.floor(Math.random() * modelInfos.stages.length);
+    const stagePartUrls = modelInfos.stages[stageRandomIndex].pathes;
     const cyberStagePartModelResponses = await Promise.all(
       stagePartUrls.map((cyberStagePartUrl) => axios.get(cyberStagePartUrl, { responseType: 'arraybuffer' })),
     );

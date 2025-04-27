@@ -1,4 +1,30 @@
 {
+  "stages": [
+    {
+      "name": "CyberStage",
+      "pathes": [
+        "/threedmodels/stages/CyberStages/CyberStage_AB.glb",
+        "/threedmodels/stages/CyberStages/CyberStage_C_Screen.glb",
+        "/threedmodels/stages/CyberStages/CyberStage_D.glb"
+      ]
+    },
+    {
+      "name": "Palace",
+      "pathes": [
+        "/threedmodels/stages/Palace/Palace.glb"
+      ]
+    }
+  ],
+  "vrms": [
+    {
+      "name": "アリシア・ソリッド",
+      "path": "/threedmodels/vrms/AliciaSolid.vrm"
+    },
+    {
+      "name": "ドナルド・トランプ",
+      "path": "/threedmodels/vrms/trump.vrm"
+    }
+  ],
   "animations": [
     {
       "name": "全身を見せる",
