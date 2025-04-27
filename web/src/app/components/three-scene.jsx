@@ -17,6 +17,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { VRMLoaderPlugin } from '@pixiv/three-vrm';
 import { createVRMAnimationClip, VRMAnimationLoaderPlugin } from '@pixiv/three-vrm-animation';
 import { OrbitControls } from 'three-orbitcontrols-ts';
+import { LipSync } from './lipSync/lipSync';
+import { EmoteController } from './emoteController/emoteController';
 
 export class ThreeScene extends React.Component {
   #canvas = null;
@@ -28,13 +30,17 @@ export class ThreeScene extends React.Component {
   #currentVrm = null;
   #currentAnimationMixer = null;
   #currentAnimaionClipActions = [];
+  #_lipSync = null;
+  emoteController;
 
   constructor(props) {
     super(props);
     this.animate = this.animate.bind(this);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.#_lipSync = new LipSync(new AudioContext());
+  }
 
   onCanvasLoaded = (canvas) => {
     this.#initScene(canvas);
@@ -47,6 +53,8 @@ export class ThreeScene extends React.Component {
     const vrmModel = modelInfos.vrms[0].path;
     const vrmDataResponse = await axios.get(vrmModel, { responseType: 'arraybuffer' });
     await this.updateVrmArryaBuffer(vrmDataResponse.data);
+    this.emoteController = new EmoteController(this.#currentVrm, this.#camera);
+
     const vrmaDataAnimationResponse = await axios.get(modelInfos.animations[0].path, { responseType: 'arraybuffer' });
     await this.updateVrmAnimationArryaBuffer(vrmaDataAnimationResponse.data);
     const stageRandomIndex = Math.floor(Math.random() * modelInfos.stages.length);
@@ -158,12 +166,30 @@ export class ThreeScene extends React.Component {
     return gltf;
   }
 
+  /**
+   * 音声を再生し、リップシンクを行う
+   */
+  async speakVrm(buffer, expression) {
+    this.emoteController?.playEmotion(expression);
+    await new Promise((resolve) => {
+      this.#_lipSync?.playFromArrayBuffer(buffer, () => {
+        resolve(true);
+      });
+    });
+  }
+
   animate() {
     // 次のフレームを要求
     this.#frameId = window.requestAnimationFrame(this.animate);
 
     if (this.#clock) {
       const deltaTime = this.#clock.getDelta();
+      if (this.#_lipSync) {
+        const { volume } = this.#_lipSync.update();
+        this.emoteController?.lipSync('aa', volume);
+      }
+  
+      this.emoteController?.update(deltaTime);
       if (this.#currentAnimationMixer) {
         this.#currentAnimationMixer.update(deltaTime);
       }
