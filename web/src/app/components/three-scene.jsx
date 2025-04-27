@@ -2,7 +2,17 @@
 
 import React from 'react';
 import axios from 'axios';
-import { WebGLRenderer, Scene, PerspectiveCamera, DirectionalLight, AmbientLight, Color, DirectionalLightHelper, AnimationMixer, Clock } from 'three';
+import {
+  WebGLRenderer,
+  Scene,
+  PerspectiveCamera,
+  DirectionalLight,
+  AmbientLight,
+  Color,
+  DirectionalLightHelper,
+  AnimationMixer,
+  Clock,
+} from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { VRMLoaderPlugin } from '@pixiv/three-vrm';
 import { createVRMAnimationClip, VRMAnimationLoaderPlugin } from '@pixiv/three-vrm-animation';
